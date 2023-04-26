@@ -120,6 +120,11 @@ class Grpc implements ConnectionInterface
                 $this->emulatorGapicConfig($config['emulatorHost'])
             );
         }
+
+        $maxReceiveMessageLength = $config['transportConfig']['grpc']['stubOpts']['grpc.max_receive_message_length'] ?? null;
+        if (isset($maxReceiveMessageLength)) {
+            $grpcConfig['transportConfig']['grpc']['stubOpts']['grpc.max_receive_message_length'] = $maxReceiveMessageLength;
+        }
         //@codeCoverageIgnoreEnd
 
         $this->clientConfig = $grpcConfig;
