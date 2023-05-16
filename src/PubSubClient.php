@@ -150,6 +150,9 @@ class PubSubClient
         $this->clientConfig = $config;
         $connectionType = $this->getConnectionType($config);
         $emulatorHost = getenv('PUBSUB_EMULATOR_HOST');
+        if (!$emulatorHost && isset($_ENV['PUBSUB_EMULATOR_HOST']) && !empty($_ENV['PUBSUB_EMULATOR_HOST'])) {
+            $emulatorHost = $_ENV['PUBSUB_EMULATOR_HOST'];
+        }
         $config += [
             'scopes' => [self::FULL_CONTROL_SCOPE],
             'projectIdRequired' => true,
