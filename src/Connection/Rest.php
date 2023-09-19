@@ -344,6 +344,30 @@ class Rest implements ConnectionInterface
     /**
      * @param array $args
      */
+    public function listRevisions(array $args)
+    {
+        return $this->send('schemas', 'listRevisions', $args);
+    }
+
+    /**
+     * @param array $args
+     */
+    public function commitSchema(array $args)
+    {
+        return $this->send('schemas', 'commit', $args);
+    }
+
+    /**
+     * @param array $args
+     */
+    public function deleteRevision(array $args)
+    {
+        return $this->send('schemas', 'deleteRevision', $args);
+    }
+
+    /**
+     * @param array $args
+     */
     public function validateMessage(array $args)
     {
         return $this->send('schemas', 'validateMessage', $args);
