@@ -198,6 +198,10 @@ class PubSubClient
             $config['universeDomain']
         );
 
+        if (isset($config['encode'])) {
+            $this->encode = (bool) $config['encode'];
+        }
+
         $this->projectId = $this->detectProjectId($config);
 
         $this->clientConfig = $config;
